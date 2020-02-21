@@ -1,7 +1,4 @@
 class Product < ApplicationRecord
-    # has_one :term
-    # scope :newsletter, where(subscribed_to_newsletter: true)
-
 
     def self.fetch_data
         require 'net/http'

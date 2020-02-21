@@ -1,5 +1,8 @@
 class Api::V1::ProductsController < ApplicationController
 
+    def post_data
+        Product.fetch_data(true)
+    end    
 
     def get_by_region
         productskus = Product.where("product_attributes -> 'location' ? '#{params[:region_name]}'").or(Product.where("product_attributes -> 'fromLocation' ? '#{params[:region_name]}'")).map(&:sku)

@@ -5,9 +5,9 @@
 # set :output, ‘log/whenever.log’ 
 
 
-every :day, at: '12:00am' do
+every :day, at: '12:00 am' do
     p "Cron Job Started"
-    rake 'fetch_data:store_data_in_db'
+    runner 'Product.fetch_data(false)'
     p "Cron Job Ended"
 end
 

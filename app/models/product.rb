@@ -1,12 +1,15 @@
 class Product < ApplicationRecord
 
-    def self.fetch_data
+
+    def self.fetch_data(post_api)
         require 'net/http'
     
         url = 'http://localhost:3000/index.json'
         uri = URI(url)
         response = Net::HTTP.get(uri)
         res = JSON.parse(response)
+
+        res_status = []
     
         p "Starting Rake Task Starting Rake Task Starting Rake Task Starting Rake Task"
     
@@ -70,8 +73,10 @@ class Product < ApplicationRecord
                 end   
             end    
         end      
-        
-        # render :json => {:term_status => @return_term_val, :product_status => @return_prod_val}
+
+    
+        res_status <<  {:term_status => @return_term_val, :product_status => @return_prod_val}        
+        res_status       
     
         p "Ending Rake Task Ending Rake Task Ending Rake Task Ending Rake Task"
     
